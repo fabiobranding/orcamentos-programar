@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configurações — OrçaMármore</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-name">OrçaMármore</div>
+    <div class="brand-sub">Gestão de orçamentos</div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-label">Menu</div>
+    <a href="dashboard.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Dashboard
+    </a>
+    <a href="orcamentos.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      Orçamentos
+    </a>
+    <a href="novo-orcamento.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      Novo Orçamento
+    </a>
+    <a href="catalogo.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      Catálogo
+    </a>
+    <div class="nav-label" style="margin-top:12px;">Conta</div>
+    <a href="configuracoes.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Configurações
+    </a>
+    <a href="planos.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Planos
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="#" onclick="logout()">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Sair
+    </a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <header class="topbar">
+    <div class="flex-center gap-8">
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <span class="topbar-title">Configurações da Empresa</span>
+    </div>
+    <div class="topbar-actions">
+      <div class="user-info">
+        <div class="avatar" id="avatar">M</div>
+        <span id="userName"></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-content">
+
+    <!-- Dados da empresa -->
+    <div class="form-section">
+      <div class="form-section-title">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Dados da Marmoraria
+      </div>
+      <div class="form-row cols-2">
+        <div class="form-group">
+          <label>Nome da Marmoraria</label>
+          <input type="text" id="empNome" placeholder="Ex: Marmoraria Diamante">
+        </div>
+        <div class="form-group">
+          <label>CNPJ</label>
+          <input type="text" id="empCnpj" placeholder="00.000.000/0001-00">
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="form-group">
+          <label>Telefone</label>
+          <input type="text" id="empTelefone" placeholder="(00) 0000-0000">
+        </div>
+        <div class="form-group">
+          <label>WhatsApp</label>
+          <input type="text" id="empWhatsapp" placeholder="(00) 00000-0000">
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="form-group">
+          <label>Instagram</label>
+          <input type="text" id="empInstagram" placeholder="@marmorariadiamante">
+        </div>
+        <div class="form-group">
+          <label>Endereço</label>
+          <input type="text" id="empEndereco" placeholder="Rua, nº — Bairro — Cidade/UF">
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo -->
+    <div class="form-section">
+      <div class="form-section-title">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Logo da Empresa
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;">
+        <div>
+          <div class="logo-upload-area" onclick="document.getElementById('logoInput').click()" style="width:200px;">
+            <img id="logoPreview" class="logo-preview" style="display:none;">
+            <div id="logoPlaceholder">
+              <svg width="32" height="32" fill="none" stroke="#90A4AE" stroke-width="1.5" viewBox="0 0 24 24" style="margin:0 auto 8px;display:block;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <div style="font-size:13px;color:#90A4AE;">Clique para enviar logo</div>
+              <div style="font-size:11px;color:#B0BEC5;margin-top:4px;">PNG, JPG até 2MB</div>
+            </div>
+          </div>
+          <input type="file" id="logoInput" accept="image/*" style="display:none;" onchange="uploadLogo(this)">
+          <button class="btn btn-ghost btn-sm mt-8" onclick="removerLogo()">Remover logo</button>
+        </div>
+        <div style="font-size:13px;color:#78909C;max-width:280px;">
+          <p style="margin-bottom:8px;">A logo aparece no cabeçalho do PDF do orçamento.</p>
+          <p>Recomendamos imagem no formato horizontal, fundo transparente (PNG) ou branco.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cor do PDF -->
+    <div class="form-section">
+      <div class="form-section-title">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>
+        Cor do PDF
+      </div>
+      <div class="color-options">
+        <label class="color-opt" id="optVerde">
+          <input type="radio" name="corPDF" value="verde" style="display:none;" onchange="selecionarCor('verde')">
+          <div class="color-swatch" style="background:#1B5E20;"></div>
+          <span style="font-size:13px;">Verde Escuro</span>
+        </label>
+        <label class="color-opt" id="optAzul">
+          <input type="radio" name="corPDF" value="azul" style="display:none;" onchange="selecionarCor('azul')">
+          <div class="color-swatch" style="background:#0D47A1;"></div>
+          <span style="font-size:13px;">Azul Marinho</span>
+        </label>
+        <label class="color-opt" id="optGrafite">
+          <input type="radio" name="corPDF" value="grafite" style="display:none;" onchange="selecionarCor('grafite')">
+          <div class="color-swatch" style="background:#212121;"></div>
+          <span style="font-size:13px;">Cinza Grafite</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Observações padrão -->
+    <div class="form-section">
+      <div class="form-section-title">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Observações Padrão do Orçamento
+      </div>
+      <p style="font-size:12px;color:#78909C;margin-bottom:12px;">
+        Use <code>{{validade}}</code> para inserir automaticamente os dias de validade.
+        Uma observação por linha.
+      </p>
+      <div class="form-group">
+        <textarea id="obsOrcamento" rows="8" placeholder="Uma observação por linha..."></textarea>
+      </div>
+    </div>
+
+    <!-- Mensagem WhatsApp -->
+    <div class="form-section">
+      <div class="form-section-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#4CAF50"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Mensagem Padrão do WhatsApp
+      </div>
+      <p style="font-size:12px;color:#78909C;margin-bottom:12px;">
+        Variáveis disponíveis: <code>{{cliente}}</code>, <code>{{numero}}</code>, <code>{{valor}}</code>
+      </p>
+      <div class="form-group">
+        <textarea id="msgWhats" rows="4"></textarea>
+      </div>
+    </div>
+
+    <!-- Botão salvar -->
+    <div class="flex-center gap-12">
+      <button class="btn btn-primary" onclick="salvarConfigs()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Salvar Configurações
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/core.js"></script>
+<script>
+function selecionarCor(cor) {
+  document.querySelectorAll('.color-opt').forEach(el => el.classList.remove('selected'));
+  document.getElementById('opt' + cor.charAt(0).toUpperCase() + cor.slice(1)).classList.add('selected');
+}
+
+function uploadLogo(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 2 * 1024 * 1024) { toast('Logo deve ter menos de 2MB.', 'error'); return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    const src = e.target.result;
+    const img = document.getElementById('logoPreview');
+    img.src = src;
+    img.style.display = 'block';
+    document.getElementById('logoPlaceholder').style.display = 'none';
+    // Salvar imediatamente
+    const emp = getEmpresa();
+    emp.logo  = src;
+    setEmpresa(emp);
+    toast('Logo carregada!');
+  };
+  reader.readAsDataURL(file);
+}
+
+function removerLogo() {
+  document.getElementById('logoPreview').style.display = 'none';
+  document.getElementById('logoPlaceholder').style.display = '';
+  const emp = getEmpresa();
+  emp.logo  = '';
+  setEmpresa(emp);
+  toast('Logo removida.');
+}
+
+function salvarConfigs() {
+  const emp = getEmpresa();
+  emp.nome       = document.getElementById('empNome').value.trim();
+  emp.cnpj       = document.getElementById('empCnpj').value.trim();
+  emp.telefone   = document.getElementById('empTelefone').value.trim();
+  emp.whatsapp   = document.getElementById('empWhatsapp').value.trim();
+  emp.instagram  = document.getElementById('empInstagram').value.trim();
+  emp.endereco   = document.getElementById('empEndereco').value.trim();
+  emp.corPDF     = document.querySelector('input[name="corPDF"]:checked')?.value || 'verde';
+  emp.obsOrcamento = document.getElementById('obsOrcamento').value
+    .split('\n').map(l => l.trim()).filter(Boolean);
+  emp.msgWhats   = document.getElementById('msgWhats').value.trim();
+  setEmpresa(emp);
+  toast('Configurações salvas!');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const emp = getEmpresa();
+  document.getElementById('empNome').value      = emp.nome      || '';
+  document.getElementById('empCnpj').value      = emp.cnpj      || '';
+  document.getElementById('empTelefone').value  = emp.telefone  || '';
+  document.getElementById('empWhatsapp').value  = emp.whatsapp  || '';
+  document.getElementById('empInstagram').value = emp.instagram || '';
+  document.getElementById('empEndereco').value  = emp.endereco  || '';
+  document.getElementById('obsOrcamento').value = (emp.obsOrcamento||[]).join('\n');
+  document.getElementById('msgWhats').value     = emp.msgWhats  || '';
+
+  // Cor
+  const cor = emp.corPDF || 'verde';
+  const radio = document.querySelector(`input[name="corPDF"][value="${cor}"]`);
+  if (radio) radio.checked = true;
+  selecionarCor(cor);
+
+  // Logo preview
+  if (emp.logo) {
+    const img = document.getElementById('logoPreview');
+    img.src = emp.logo;
+    img.style.display = 'block';
+    document.getElementById('logoPlaceholder').style.display = 'none';
+  }
+});
+</script>
+</body>
+</html>

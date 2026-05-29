@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novo Orçamento — OrçaMármore</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Datalists globais -->
+<datalist id="dlMateriais">
+  <option value="Mármore Carrara">
+  <option value="Mármore Champagne">
+  <option value="Mármore Travertino">
+  <option value="Mármore Branco Nacional">
+  <option value="Granito Preto São Gabriel">
+  <option value="Granito Branco Dallas">
+  <option value="Granito Cinza Corumbá">
+  <option value="Quartzo Branco Polar">
+  <option value="Quartzo Cinza">
+  <option value="Quartzo Calacata Gold">
+  <option value="Porcelanato">
+</datalist>
+<datalist id="dlItens"></datalist>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-name">OrçaMármore</div>
+    <div class="brand-sub">Gestão de orçamentos</div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-label">Menu</div>
+    <a href="dashboard.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Dashboard
+    </a>
+    <a href="orcamentos.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      Orçamentos
+    </a>
+    <a href="novo-orcamento.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      Novo Orçamento
+    </a>
+    <a href="catalogo.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      Catálogo
+    </a>
+    <div class="nav-label" style="margin-top:12px;">Conta</div>
+    <a href="configuracoes.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Configurações
+    </a>
+    <a href="planos.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Planos
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="#" onclick="logout()">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Sair
+    </a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <header class="topbar">
+    <div class="flex-center gap-8">
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <span class="topbar-title" id="topbarTitle">Novo Orçamento</span>
+    </div>
+    <div class="topbar-actions">
+      <div class="user-info">
+        <div class="avatar" id="avatar">M</div>
+        <span id="userName"></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-content">
+
+    <!-- Dados principais -->
+    <div class="form-section">
+      <div class="form-section-title">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Dados do Orçamento
+      </div>
+      <div class="form-row cols-3">
+        <div class="form-group">
+          <label>Número</label>
+          <input type="text" id="numero" readonly style="background:#f5f5f5;cursor:not-allowed;">
+        </div>
+        <div class="form-group">
+          <label>Data</label>
+          <input type="date" id="data">
+        </div>
+        <div class="form-group">
+          <label>Validade</label>
+          <input type="date" id="validade">
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="form-group">
+          <label>Cliente / Obra</label>
+          <input type="text" id="cliente" placeholder="Nome do cliente ou identificação da obra">
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select id="status">
+            <option value="em-aberto">Em aberto</option>
+            <option value="aprovado">Aprovado</option>
+            <option value="em-producao">Em produção</option>
+            <option value="entregue">Entregue</option>
+            <option value="recusado">Recusado</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ambientes -->
+    <div class="form-section">
+      <div class="form-section-title">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        Ambientes e Itens
+      </div>
+
+      <div id="ambientesContainer"></div>
+
+      <button type="button" class="btn btn-outline mt-8" onclick="adicionarAmbiente()">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Adicionar Ambiente
+      </button>
+    </div>
+
+    <!-- Material e valor -->
+    <div class="form-section">
+      <div class="form-section-title">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Material e Valor
+      </div>
+      <div class="form-row cols-2">
+        <div class="form-group">
+          <label>Material Principal Utilizado</label>
+          <input type="text" id="material" list="dlMateriais" placeholder="Ex: Mármore Champagne, Granito Preto São Gabriel...">
+        </div>
+        <div class="form-group">
+          <label>Valor Total (R$)</label>
+          <input type="number" id="valorTotal" placeholder="0,00" step="0.01" min="0">
+        </div>
+      </div>
+    </div>
+
+    <!-- Botões de ação -->
+    <div class="flex-center gap-12" style="flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="salvar()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Salvar
+      </button>
+      <button class="btn btn-success" onclick="salvarEGerarPDF()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Gerar PDF
+      </button>
+      <button class="btn btn-whats" onclick="salvarEEnviarWhats()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </button>
+      <a href="orcamentos.html" class="btn btn-ghost">Cancelar</a>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/core.js"></script>
+<script src="js/pdf.js"></script>
+<script>
+// Preencher datalist de itens do catálogo
+function preencherDlItens() {
+  const dl   = document.getElementById('dlItens');
+  const cats = getCatalogo();
+  dl.innerHTML = cats.map(c => `<option value="${c.nome}">`).join('');
+}
+
+// ─── Ambientes ───────────────────────────────
+let ambienteCount = 0;
+
+function adicionarAmbiente(dadosAmbiente) {
+  ambienteCount++;
+  const id   = 'amb_' + ambienteCount;
+  const nome = dadosAmbiente ? dadosAmbiente.nome : `Ambiente ${ambienteCount}`;
+  const div  = document.createElement('div');
+  div.className = 'ambiente-block';
+  div.id        = id;
+  div.innerHTML = `
+    <div class="ambiente-header">
+      <input type="text" value="${escaparAttr(nome)}" placeholder="Nome do ambiente (ex: Suíte 1, Cozinha...)" class="amb-nome">
+      <button type="button" class="btn btn-danger btn-sm" onclick="removerAmbiente('${id}')">&#x2715; Remover</button>
+    </div>
+    <div class="ambiente-body">
+      <div class="item-labels">
+        <span>Descrição</span>
+        <span>Dimensões</span>
+        <span>Quantidade</span>
+        <span>Observação</span>
+        <span></span>
+      </div>
+      <div class="itens-container"></div>
+    </div>
+    <div class="ambiente-footer">
+      <button type="button" class="btn btn-ghost btn-sm" onclick="adicionarItem('${id}')">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Adicionar item
+      </button>
+    </div>
+  `;
+  document.getElementById('ambientesContainer').appendChild(div);
+
+  // Preencher itens existentes
+  if (dadosAmbiente && dadosAmbiente.itens) {
+    dadosAmbiente.itens.forEach(item => adicionarItem(id, item));
+  } else {
+    adicionarItem(id);
+  }
+}
+
+function removerAmbiente(id) {
+  document.getElementById(id).remove();
+}
+
+function adicionarItem(ambId, dadosItem) {
+  const cont  = document.querySelector(`#${ambId} .itens-container`);
+  const itemId = 'item_' + Date.now() + '_' + Math.random().toString(36).slice(2,6);
+  const row    = document.createElement('div');
+  row.className = 'item-row';
+  row.id        = itemId;
+  row.innerHTML = `
+    <input type="text" list="dlItens" placeholder="Descrição do item" class="item-desc" value="${escaparAttr(dadosItem?.descricao||'')}">
+    <input type="text" placeholder="Dimensões" class="item-dim" value="${escaparAttr(dadosItem?.dimensoes||'')}">
+    <input type="text" placeholder="Qtd / Unidade" class="item-qtd" value="${escaparAttr(dadosItem?.quantidade||'')}">
+    <input type="text" placeholder="Observação" class="item-obs" value="${escaparAttr(dadosItem?.observacao||'')}">
+    <button type="button" class="btn-remove-item" title="Remover item" onclick="document.getElementById('${itemId}').remove()">&#x2715;</button>
+  `;
+  cont.appendChild(row);
+}
+
+function escaparAttr(str) {
+  return String(str||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+// ─── Coletar dados do form ───────────────────
+function coletarOrcamento() {
+  const ambientes = [];
+  document.querySelectorAll('.ambiente-block').forEach(amb => {
+    const nomeAmb = amb.querySelector('.amb-nome').value.trim();
+    const itens   = [];
+    amb.querySelectorAll('.item-row').forEach(row => {
+      const desc = row.querySelector('.item-desc').value.trim();
+      const dim  = row.querySelector('.item-dim').value.trim();
+      const qtd  = row.querySelector('.item-qtd').value.trim();
+      const obs  = row.querySelector('.item-obs').value.trim();
+      if (desc || dim || qtd) itens.push({ descricao: desc, dimensoes: dim, quantidade: qtd, observacao: obs });
+    });
+    if (nomeAmb || itens.length) ambientes.push({ nome: nomeAmb, itens });
+  });
+
+  return {
+    numero:     document.getElementById('numero').value,
+    data:       document.getElementById('data').value,
+    validade:   document.getElementById('validade').value,
+    cliente:    document.getElementById('cliente').value.trim(),
+    status:     document.getElementById('status').value,
+    material:   document.getElementById('material').value.trim(),
+    valorTotal: parseFloat(document.getElementById('valorTotal').value) || 0,
+    ambientes,
+  };
+}
+
+// ─── Salvar ──────────────────────────────────
+let orcId = null;
+
+function salvar(silent) {
+  const dados = coletarOrcamento();
+  if (!dados.cliente) { toast('Informe o cliente/obra.', 'error'); return null; }
+  const orc = Object.assign({ id: orcId || gerarId() }, dados);
+  orcId = orc.id;
+  saveOrcamento(orc);
+  if (!silent) toast('Orçamento salvo!');
+  // Atualizar URL sem recarregar
+  if (history.replaceState) history.replaceState({}, '', '?id=' + orcId);
+  return orc;
+}
+
+function salvarEGerarPDF() {
+  const orc = salvar(true);
+  if (orc) gerarPDF(orc);
+}
+
+function salvarEEnviarWhats() {
+  const orc = salvar(true);
+  if (!orc) return;
+  const emp = getEmpresa();
+  const msg = (emp.msgWhats || 'Olá {{cliente}}, segue o orçamento Nº {{numero}} no valor de R$ {{valor}}.')
+    .replace('{{cliente}}', orc.cliente)
+    .replace('{{numero}}',  orc.numero)
+    .replace('{{valor}}',   formatBRL(orc.valorTotal));
+  const num = (emp.whatsapp || '').replace(/\D/g,'');
+  const url = num ? `https://wa.me/55${num}?text=${encodeURIComponent(msg)}`
+                  : `https://wa.me/?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+}
+
+// ─── Init ────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  preencherDlItens();
+
+  const params = new URLSearchParams(window.location.search);
+  const editId = params.get('id');
+
+  if (editId) {
+    // Modo edição
+    const orc = getOrcamento(editId);
+    if (orc) {
+      orcId = orc.id;
+      document.getElementById('topbarTitle').textContent = 'Editar Orçamento';
+      document.getElementById('numero').value     = orc.numero     || '';
+      document.getElementById('data').value       = orc.data       || hoje();
+      document.getElementById('validade').value   = orc.validade   || dataValidade(15);
+      document.getElementById('cliente').value    = orc.cliente    || '';
+      document.getElementById('status').value     = orc.status     || 'em-aberto';
+      document.getElementById('material').value   = orc.material   || '';
+      document.getElementById('valorTotal').value = orc.valorTotal || '';
+      (orc.ambientes || []).forEach(amb => adicionarAmbiente(amb));
+    }
+  } else {
+    // Novo orçamento
+    document.getElementById('numero').value   = proximoNumero();
+    document.getElementById('data').value     = hoje();
+    document.getElementById('validade').value = dataValidade(15);
+    adicionarAmbiente();
+  }
+});
+</script>
+</body>
+</html>

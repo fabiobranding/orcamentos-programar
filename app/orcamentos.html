@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orçamentos — OrçaMármore</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-name">OrçaMármore</div>
+    <div class="brand-sub">Gestão de orçamentos</div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-label">Menu</div>
+    <a href="dashboard.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Dashboard
+    </a>
+    <a href="orcamentos.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      Orçamentos
+    </a>
+    <a href="novo-orcamento.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      Novo Orçamento
+    </a>
+    <a href="catalogo.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      Catálogo
+    </a>
+    <div class="nav-label" style="margin-top:12px;">Conta</div>
+    <a href="configuracoes.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Configurações
+    </a>
+    <a href="planos.html">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Planos
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="#" onclick="logout()">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Sair
+    </a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <header class="topbar">
+    <div class="flex-center gap-8">
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <span class="topbar-title">Orçamentos</span>
+    </div>
+    <div class="topbar-actions">
+      <a href="novo-orcamento.html" class="btn btn-success btn-sm">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Novo
+      </a>
+      <div class="user-info">
+        <div class="avatar" id="avatar">M</div>
+        <span id="userName"></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-content">
+
+    <!-- Filtros -->
+    <div class="search-bar">
+      <input type="text" id="busca" placeholder="Buscar por cliente ou número..." oninput="renderTabela()">
+      <select id="filtroStatus" onchange="renderTabela()">
+        <option value="">Todos os status</option>
+        <option value="em-aberto">Em aberto</option>
+        <option value="aprovado">Aprovado</option>
+        <option value="em-producao">Em produção</option>
+        <option value="entregue">Entregue</option>
+        <option value="recusado">Recusado</option>
+      </select>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Nº</th>
+            <th>Cliente</th>
+            <th>Data</th>
+            <th>Material</th>
+            <th>Valor</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaOrcamentos">
+          <tr><td colspan="7" style="text-align:center;padding:40px;color:#90A4AE;">Carregando...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal confirmar exclusão -->
+<div class="modal-overlay" id="modalExcluir">
+  <div class="modal" style="max-width:380px;">
+    <div class="modal-header">
+      <span class="modal-title">Excluir Orçamento</span>
+      <button class="modal-close" onclick="fecharModal('modalExcluir')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:14px;color:#546E7A;">Tem certeza que deseja excluir o orçamento <strong id="modalNumero"></strong>? Esta ação não pode ser desfeita.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="fecharModal('modalExcluir')">Cancelar</button>
+      <button class="btn btn-danger" id="btnConfirmarExcluir">Excluir</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal alterar status -->
+<div class="modal-overlay" id="modalStatus">
+  <div class="modal" style="max-width:340px;">
+    <div class="modal-header">
+      <span class="modal-title">Alterar Status</span>
+      <button class="modal-close" onclick="fecharModal('modalStatus')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Novo Status</label>
+        <select id="novoStatus">
+          <option value="em-aberto">Em aberto</option>
+          <option value="aprovado">Aprovado</option>
+          <option value="em-producao">Em produção</option>
+          <option value="entregue">Entregue</option>
+          <option value="recusado">Recusado</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="fecharModal('modalStatus')">Cancelar</button>
+      <button class="btn btn-primary" id="btnSalvarStatus">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/core.js"></script>
+<script src="js/pdf.js"></script>
+<script>
+const badgeMap = {
+  'em-aberto':   '<span class="badge badge-aberto">Em aberto</span>',
+  'aprovado':    '<span class="badge badge-aprovado">Aprovado</span>',
+  'em-producao': '<span class="badge badge-producao">Em produção</span>',
+  'entregue':    '<span class="badge badge-entregue">Entregue</span>',
+  'recusado':    '<span class="badge badge-recusado">Recusado</span>',
+};
+
+function renderTabela() {
+  const busca  = document.getElementById('busca').value.toLowerCase();
+  const status = document.getElementById('filtroStatus').value;
+  let lista    = getOrcamentos();
+
+  if (busca)  lista = lista.filter(o => (o.cliente||'').toLowerCase().includes(busca) || (o.numero||'').toLowerCase().includes(busca));
+  if (status) lista = lista.filter(o => o.status === status);
+
+  const tbody = document.getElementById('tabelaOrcamentos');
+
+  if (!lista.length) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="7" style="text-align:center;padding:50px;color:#90A4AE;">
+          Nenhum orçamento encontrado.
+          <br><br>
+          <a href="novo-orcamento.html" class="btn btn-success btn-sm">+ Criar orçamento</a>
+        </td>
+      </tr>`;
+    return;
+  }
+
+  tbody.innerHTML = lista.map(o => `
+    <tr>
+      <td><strong style="color:#1B5E20;">${o.numero||'—'}</strong></td>
+      <td>${o.cliente||'—'}</td>
+      <td>${formatData(o.data)}</td>
+      <td style="font-size:12px;color:#546E7A;">${o.material||'—'}</td>
+      <td><strong>${formatBRL(o.valorTotal)}</strong></td>
+      <td>
+        <span style="cursor:pointer;" onclick="abrirModalStatus('${o.id}','${o.status||'em-aberto'}')">
+          ${badgeMap[o.status] || badgeMap['em-aberto']}
+        </span>
+      </td>
+      <td>
+        <div class="flex-center gap-8" style="flex-wrap:wrap;">
+          <button class="btn btn-ghost btn-sm" title="Gerar PDF" onclick="gerarPDF(getOrcamento('${o.id}'))">PDF</button>
+          <a href="novo-orcamento.html?id=${o.id}" class="btn btn-outline btn-sm" title="Editar">Editar</a>
+          <button class="btn btn-ghost btn-sm" title="Duplicar" onclick="duplicar('${o.id}')">Duplicar</button>
+          <button class="btn btn-whats btn-sm" title="WhatsApp" onclick="enviarWhats('${o.id}')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </button>
+          <button class="btn btn-danger btn-sm" title="Excluir" onclick="abrirModalExcluir('${o.id}','${(o.numero||'').replace(/'/g,"\\'")}')">&#x1F5D1;</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function duplicar(id) {
+  const orc = getOrcamento(id);
+  if (!orc) return;
+  const novo = Object.assign({}, orc, {
+    id: gerarId(),
+    numero: proximoNumero(),
+    data: hoje(),
+    validade: dataValidade(15),
+    status: 'em-aberto',
+    cliente: orc.cliente + ' (cópia)',
+  });
+  saveOrcamento(novo);
+  renderTabela();
+  toast('Orçamento duplicado!');
+}
+
+function enviarWhats(id) {
+  const orc    = getOrcamento(id);
+  const emp    = getEmpresa();
+  if (!orc) return;
+  const msg = (emp.msgWhats || 'Olá {{cliente}}, segue o orçamento Nº {{numero}} no valor de R$ {{valor}}.')
+    .replace('{{cliente}}',  orc.cliente || '')
+    .replace('{{numero}}',   orc.numero  || '')
+    .replace('{{valor}}',    formatBRL(orc.valorTotal));
+  const num = (emp.whatsapp || '').replace(/\D/g,'');
+  const url = num ? `https://wa.me/55${num}?text=${encodeURIComponent(msg)}`
+                  : `https://wa.me/?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+}
+
+let excluirId = null;
+function abrirModalExcluir(id, numero) {
+  excluirId = id;
+  document.getElementById('modalNumero').textContent = numero;
+  document.getElementById('modalExcluir').classList.add('open');
+}
+
+document.getElementById('btnConfirmarExcluir').addEventListener('click', () => {
+  if (excluirId) {
+    deleteOrcamento(excluirId);
+    excluirId = null;
+    fecharModal('modalExcluir');
+    renderTabela();
+    toast('Orçamento excluído.');
+  }
+});
+
+let statusId = null;
+function abrirModalStatus(id, statusAtual) {
+  statusId = id;
+  document.getElementById('novoStatus').value = statusAtual;
+  document.getElementById('modalStatus').classList.add('open');
+}
+
+document.getElementById('btnSalvarStatus').addEventListener('click', () => {
+  if (statusId) {
+    const orc = getOrcamento(statusId);
+    if (orc) {
+      orc.status = document.getElementById('novoStatus').value;
+      saveOrcamento(orc);
+    }
+    statusId = null;
+    fecharModal('modalStatus');
+    renderTabela();
+    toast('Status atualizado!');
+  }
+});
+
+function fecharModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
+});
+
+document.addEventListener('DOMContentLoaded', renderTabela);
+</script>
+</body>
+</html>
