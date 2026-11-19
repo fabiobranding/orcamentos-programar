@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard — OrçaMármore</title>
+<title>Dashboard — Programar Marmoraria</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,8 +12,8 @@
 <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-brand">
-    <div class="brand-name">OrçaMármore</div>
-    <div class="brand-sub">Gestão de orçamentos</div>
+    <img class="brand-logo" src="img/logo-programar.svg" alt=""><div><div class="brand-name">Programar</div>
+    <div class="brand-sub">Marmoraria · Orçamentos</div></div>
   </div>
   <nav class="sidebar-nav">
     <div class="nav-label">Menu</div>
@@ -71,7 +72,7 @@
 
     <!-- Saudação -->
     <div style="margin-bottom:24px;">
-      <h2 style="font-size:22px;color:#1B5E20;font-weight:700;" id="saudacao">Olá!</h2>
+      <h2 style="font-size:22px;color:#2a6f49;font-weight:700;" id="saudacao">Olá!</h2>
       <p style="color:#78909C;font-size:14px;margin-top:4px;">Aqui está o resumo das suas operações este mês.</p>
     </div>
 
@@ -187,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tbody.innerHTML = `
       <tr>
         <td colspan="6" style="text-align:center;padding:40px;color:#90A4AE;">
-          Nenhum orçamento ainda. <a href="novo-orcamento.html" style="color:#1B5E20;font-weight:700;">Criar o primeiro</a>
+          Nenhum orçamento ainda. <a href="novo-orcamento.html" style="color:#2a6f49;font-weight:700;">Criar o primeiro</a>
         </td>
       </tr>`;
     return;
@@ -203,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   tbody.innerHTML = ultimos.map(o => `
     <tr>
-      <td><strong style="color:#1B5E20;">${o.numero || '—'}</strong></td>
+      <td><strong style="color:#2a6f49;">${o.numero || '—'}</strong></td>
       <td>${o.cliente || '—'}</td>
       <td>${formatData(o.data)}</td>
       <td><strong>${formatBRL(o.valorTotal)}</strong></td>

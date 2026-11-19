@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Novo Orçamento — OrçaMármore</title>
+<title>Novo Orçamento — Programar Marmoraria</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -27,8 +28,8 @@
 <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-brand">
-    <div class="brand-name">OrçaMármore</div>
-    <div class="brand-sub">Gestão de orçamentos</div>
+    <img class="brand-logo" src="img/logo-programar.svg" alt=""><div><div class="brand-name">Programar</div>
+    <div class="brand-sub">Marmoraria · Orçamentos</div></div>
   </div>
   <nav class="sidebar-nav">
     <div class="nav-label">Menu</div>
@@ -151,7 +152,7 @@
         </div>
         <div class="form-group">
           <label>Valor Total (R$)</label>
-          <input type="number" id="valorTotal" placeholder="0,00" step="0.01" min="0">
+          <input type="text" id="valorTotal" inputmode="decimal" autocomplete="off" placeholder="Ex: 39.845,00" onblur="if(this.value.trim())this.value=formatValorBR(parseValorBR(this.value))">
         </div>
       </div>
     </div>
@@ -275,7 +276,7 @@ function coletarOrcamento() {
     cliente:    document.getElementById('cliente').value.trim(),
     status:     document.getElementById('status').value,
     material:   document.getElementById('material').value.trim(),
-    valorTotal: parseFloat(document.getElementById('valorTotal').value) || 0,
+    valorTotal: parseValorBR(document.getElementById('valorTotal').value),
     ambientes,
   };
 }
@@ -333,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('cliente').value    = orc.cliente    || '';
       document.getElementById('status').value     = orc.status     || 'em-aberto';
       document.getElementById('material').value   = orc.material   || '';
-      document.getElementById('valorTotal').value = orc.valorTotal || '';
+      document.getElementById('valorTotal').value = orc.valorTotal ? formatValorBR(orc.valorTotal) : '';
       (orc.ambientes || []).forEach(amb => adicionarAmbiente(amb));
     }
   } else {

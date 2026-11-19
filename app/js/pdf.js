@@ -12,13 +12,13 @@ function gerarPDF(orcamento) {
   // Paleta de cores baseada na configuração
   const paletas = {
     verde: {
-      primaria:    '#1B5E20',
-      media:       '#2E7D32',
-      clara:       '#E8F5E9',
-      destaque:    '#4CAF50',
-      fundo:       '#F1F8E9',
-      bordaAlt:    '#A5D6A7',
-      textoHeader: '#C8E6C9',
+      primaria:    '#2f7d52',
+      media:       '#3a9462',
+      clara:       '#e7f3ec',
+      destaque:    '#5fb585',
+      fundo:       '#f2f8f4',
+      bordaAlt:    '#a9d5bb',
+      textoHeader: '#dcefe3',
     },
     azul: {
       primaria:    '#0D47A1',
@@ -106,7 +106,7 @@ function gerarPDF(orcamento) {
 
   // Logo
   const logoHtml = empresa.logo
-    ? `<img src="${empresa.logo}" style="max-height:60px;max-width:140px;object-fit:contain;margin-right:16px;" alt="Logo">`
+    ? `<img src="${empresa.logo}" style="height:64px;width:auto;max-width:140px;object-fit:contain;margin-right:16px;background:#fff;border-radius:50%;padding:3px;" alt="Logo">`
     : `<div style="width:60px;height:60px;background:rgba(255,255,255,0.2);border-radius:8px;margin-right:16px;display:flex;align-items:center;justify-content:center;font-size:24px;color:rgba(255,255,255,0.7);">&#127968;</div>`;
 
   // Contatos do header
@@ -183,7 +183,7 @@ function gerarPDF(orcamento) {
     ${logoHtml}
     <div>
       <div style="color:#ffffff;font-size:20px;font-weight:700;letter-spacing:0.5px;">
-        ${escapeHtml((empresa.nome || 'Minha Marmoraria').toUpperCase())}
+        ${escapeHtml((empresa.nome || 'Programar Marmoraria').toUpperCase())}
       </div>
       ${empresa.cnpj ? `<div style="color:${cor.textoHeader};font-size:11px;margin-top:3px;">CNPJ: ${escapeHtml(empresa.cnpj)}</div>` : ''}
       <div style="color:${cor.textoHeader};font-size:12px;margin-top:6px;">

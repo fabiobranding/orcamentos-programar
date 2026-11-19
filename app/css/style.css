@@ -4,11 +4,11 @@
    ============================================= */
 
 :root {
-  --verde-escuro: #1B5E20;
-  --verde-medio: #2E7D32;
-  --verde-claro: #E8F5E9;
-  --verde-destaque: #4CAF50;
-  --fundo: #F1F8E9;
+  --verde-escuro: #2a6f49;
+  --verde-medio: #3a9462;
+  --verde-claro: #e7f3ec;
+  --verde-destaque: #4fae79;
+  --fundo: #f3f8f5;
   --branco: #ffffff;
   --cinza-texto: #37474F;
   --cinza-claro: #ECEFF1;
@@ -49,6 +49,8 @@ body {
   border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 
+.sidebar-brand { display: flex; align-items: center; gap: 12px; }
+.sidebar-brand .brand-logo { width: 44px; height: 44px; flex: none; border-radius: 50%; background: #fff; padding: 2px; }
 .sidebar-brand .brand-name {
   color: var(--branco);
   font-size: 20px;

@@ -5,6 +5,9 @@
 
 'use strict';
 
+// Logo da Programar Marmoraria (embutida, aparece no app e no PDF)
+const LOGO_PROGRAMAR = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNTAgMTUwIj48Y2lyY2xlIGN4PSI3NSIgY3k9Ijc1IiByPSI3NSIgZmlsbD0iIzNhOTQ2MiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDg3LjUgNzkuNSkgc2NhbGUoMS4xMikgdHJhbnNsYXRlKC04Ny41IC03OS41KSIgZmlsbD0iI2ZmZiI+PHBhdGggZD0iTTM3IDIzaDM2djExM0gzN3oiLz48cGF0aCBkPSJNNzMgMjNIOThDMTIyIDIzIDEzOCA0MCAxMzggNjRDMTM4IDkwIDEyMCAxMDggOTYgMTA4SDgwVjgwSDk1QzEwMyA4MCAxMDkgNzQgMTA5IDY1QzEwOSA1NyAxMDQgNTIgOTYgNTJINzNaIi8+PC9nPjwvc3ZnPg==';
+
 // ─── Chaves de localStorage ────────────────────
 const KEYS = {
   USUARIO:    'om_usuario',
@@ -39,13 +42,13 @@ function logout() {
 // ─── Empresa ───────────────────────────────────
 function getEmpresa() {
   const def = {
-    nome: 'Minha Marmoraria',
-    telefone: '',
-    whatsapp: '',
-    instagram: '',
-    endereco: '',
+    nome: 'Programar Marmoraria',
+    telefone: '(31) 3043-4340',
+    whatsapp: '(31) 98949-2803',
+    instagram: 'marmorariaprogramar',
+    endereco: 'Rua das Perpétuas, 18 - Lindéia - CEP 30690-270',
     cnpj: '',
-    logo: '',
+    logo: LOGO_PROGRAMAR,
     corPDF: 'verde',
     obsOrcamento: [
       'Medições definitivas serão realizadas após aprovação do orçamento.',
@@ -58,7 +61,11 @@ function getEmpresa() {
   };
   try {
     const saved = JSON.parse(localStorage.getItem(KEYS.EMPRESA));
-    return saved ? Object.assign({}, def, saved) : def;
+    const e = saved ? Object.assign({}, def, saved) : def;
+    // campos vazios ou com o nome genérico antigo voltam para os dados da Programar
+    if (!e.nome || /^minha marmoraria$/i.test(e.nome.trim())) e.nome = def.nome;
+    ['telefone', 'whatsapp', 'instagram', 'endereco', 'logo'].forEach(k => { if (!e[k]) e[k] = def[k]; });
+    return e;
   } catch { return def; }
 }
 
@@ -66,9 +73,32 @@ function setEmpresa(e) {
   localStorage.setItem(KEYS.EMPRESA, JSON.stringify(e));
 }
 
+// ─── Valor em reais (padrão brasileiro) ────────
+// "39.845" → 39845 · "39.845,50" → 39845.5 · "39845" → 39845 · "1.250,5" → 1250.5 · "99,90" → 99.9
+function parseValorBR(v) {
+  if (typeof v === 'number') return v;
+  let s = String(v || '').replace(/[^\d.,]/g, '');
+  if (!s) return 0;
+  if (s.includes(',')) s = s.replace(/\./g, '').replace(',', '.');      // vírgula = centavos, ponto = milhar
+  else if (/\.\d{3}(\.|$)/.test(s)) s = s.replace(/\./g, '');          // "39.845" ou "1.250.000" = milhar
+  return Math.round((parseFloat(s) || 0) * 100) / 100;
+}
+function formatValorBR(n) {
+  return (parseFloat(n) || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+// corrige valores salvos com o bug antigo (39.845 virava R$ 39,85): reais com 3 casas decimais = milhar
+function corrigirValor(v) {
+  const n = parseFloat(v) || 0;
+  return Math.abs(n * 100 - Math.round(n * 100)) > 1e-6 ? Math.round(n * 1000) : n;
+}
+
 // ─── Orçamentos ────────────────────────────────
 function getOrcamentos() {
-  try { return JSON.parse(localStorage.getItem(KEYS.ORCAMENTOS)) || []; } catch { return []; }
+  try {
+    const list = JSON.parse(localStorage.getItem(KEYS.ORCAMENTOS)) || [];
+    list.forEach(o => { o.valorTotal = corrigirValor(o.valorTotal); });
+    return list;
+  } catch { return []; }
 }
 
 function setOrcamentos(list) {
